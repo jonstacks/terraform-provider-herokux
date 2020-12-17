@@ -4,6 +4,7 @@ PKG_NAME=herokux
 WEBSITE_REPO=github.com/davidji99/${PKG_NAME}
 OS := $(shell uname | tr '[:upper:]' '[:lower:]')
 VERSION := $(shell go run ${PKG_NAME}/version.go)
+# VERSION := 0.16.1
 SHA := $(shell git rev-parse --short HEAD)
 FILE_NAME=terraform-provider-${PKG_NAME}_v${VERSION}
 

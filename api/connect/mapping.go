@@ -2,8 +2,9 @@ package connect
 
 import (
 	"encoding/json"
-	"github.com/davidji99/simpleresty"
 	"time"
+
+	"github.com/davidji99/simpleresty"
 )
 
 // MappingExportOutput represents the raw output from exporting mappings on a connection.
@@ -63,8 +64,8 @@ type MappingConfig struct {
 	SFMaxDailyAPICalls *int    `json:"sf_max_daily_api_calls,omitempty"`
 	// Fields
 	// Indexes
-	Revision  *int       `json:"revision,omitempty"`
-	AppliedAt *time.Time `json:"applied_at,omitempty"`
+	Revision  *int               `json:"revision,omitempty"`
+	AppliedAt *PossiblyEmptyTime `json:"applied_at,omitempty"`
 }
 
 type MappingCounts struct {

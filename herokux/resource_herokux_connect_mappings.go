@@ -4,13 +4,14 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
+	"time"
+
 	"github.com/davidji99/terraform-provider-herokux/api"
 	"github.com/davidji99/terraform-provider-herokux/api/connect"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
-	"log"
-	"time"
 )
 
 func resourceHerokuxConnectMappings() *schema.Resource {
@@ -271,13 +272,13 @@ func resourceHerokuxConnectMappingsUpdate(ctx context.Context, d *schema.Resourc
 		// Get list of old and new mapping object names
 		unmarshallErrO := json.Unmarshal([]byte(o.(string)), &oldMapping)
 		if unmarshallErrO != nil {
-			return diag.Errorf("unable to unmarshall old mappings")
+			return diag.Errorf("unable to unmarshall old mappings: %s\n\nOld Mapping:\n%s", unmarshallErrO, o.(string))
 		}
 		log.Printf("[DEBUG] Here's the old mappings %v", oldMapping)
 
 		unmarshallErrN := json.Unmarshal([]byte(n.(string)), &newMapping)
 		if unmarshallErrN != nil {
-			return diag.Errorf("unable to unmarshall old mappings")
+			return diag.Errorf("unable to unmarshall new mappings: %s", unmarshallErrN)
 		}
 		log.Printf("[DEBUG] Here's the new mappings %v", newMapping)
 

@@ -943,10 +943,10 @@ func (m *MappingConfig) GetAccess() string {
 
 // GetAppliedAt returns the AppliedAt field if it's non-nil, zero value otherwise.
 func (m *MappingConfig) GetAppliedAt() time.Time {
-	if m == nil || m.AppliedAt == nil {
+	if m == nil || m.AppliedAt == nil || m.AppliedAt.Time.IsZero() {
 		return time.Time{}
 	}
-	return *m.AppliedAt
+	return m.AppliedAt.Time
 }
 
 // GetRevision returns the Revision field if it's non-nil, zero value otherwise.
