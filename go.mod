@@ -14,3 +14,5 @@ require (
 	github.com/pborman/uuid v1.2.1 // indirect
 	github.com/stretchr/testify v1.7.0
 )
+
+replace github.com/davidji99/simpleresty => github.com/jonstacks/simpleresty v0.2.3
